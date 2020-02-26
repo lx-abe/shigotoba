@@ -4,9 +4,6 @@ class StationsController < ApplicationController
     @stations = Station.all
   end
 
-  def show
-  end
-
   def new
     @station = Station.new
   end
@@ -18,9 +15,6 @@ class StationsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def edit
   end
 
   def update
@@ -44,5 +38,4 @@ class StationsController < ApplicationController
   def set_station
     @station = Station.find(params[:id])
   end
-
 end

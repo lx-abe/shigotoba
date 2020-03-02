@@ -10,12 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_061343) do
+ActiveRecord::Schema.define(version: 2020_03_02_021612) do
 
   create_table "stations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "workshops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "category", null: false
+    t.string "address", null: false
+    t.boolean "wifi", default: false, null: false
+    t.integer "seats_number"
+    t.string "opening_time", null: false
+    t.string "price", null: false
+    t.text "note"
+    t.bigint "station_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["station_id"], name: "index_workshops_on_station_id"
+  end
+
+  add_foreign_key "workshops", "stations"
 end

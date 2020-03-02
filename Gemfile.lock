@@ -212,7 +212,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4)
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
-  rubocop
+  rubocop (~> 0.80.1)
   sass-rails (>= 6)
   slim-rails
   slim_lint

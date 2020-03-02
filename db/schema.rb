@@ -13,21 +13,21 @@
 ActiveRecord::Schema.define(version: 2020_03_02_021612) do
 
   create_table "stations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name", null: false, comment: "駅名"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "workshops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "category", null: false
-    t.string "address", null: false
-    t.boolean "wifi", default: false, null: false
-    t.integer "seats_number"
-    t.string "opening_time", null: false
-    t.string "price", null: false
-    t.text "note"
-    t.bigint "station_id"
+    t.string "name", null: false, comment: "施設名称"
+    t.integer "category", null: false, comment: "業態"
+    t.string "address", null: false, comment: "住所"
+    t.boolean "wifi", default: false, null: false, comment: "wi-fi環境有無"
+    t.integer "seats_number", comment: "席数"
+    t.string "opening_time", null: false, comment: "営業時間"
+    t.string "price", null: false, comment: "利用料・（カフェの場合は）代表的なメニュー"
+    t.text "note", comment: "特徴"
+    t.bigint "station_id", comment: "駅ID"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["station_id"], name: "index_workshops_on_station_id"

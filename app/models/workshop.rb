@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# 施設
 class Workshop < ApplicationRecord
   belongs_to :station
   validates :name, presence: true

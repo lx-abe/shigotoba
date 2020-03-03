@@ -1,0 +1,4 @@
+h3 #{@station.name}の駅名変更
+= form_with model: @station do |form|
+  = form.text_field :name
+  = form.submit

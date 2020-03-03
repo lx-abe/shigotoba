@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# 駅の登録・管理
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_station, only: %i[show edit update destroy]
   def index
     @stations = Station.all
   end
@@ -31,6 +34,7 @@ class StationsController < ApplicationController
   end
 
   private
+
   def station_params
     params.require(:station).permit(:name)
   end

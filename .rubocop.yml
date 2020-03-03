@@ -1,0 +1,44 @@
+# Use only ascii symbols in comments.
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: true # コメントも行数に数えるか
+  Max: 30 # メソッド内に何行書けるか
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 45 # ABCサイズチェック
+
+Layout/LineLength:
+  Max: 130 # 1行あたりの文字数チェック
+
+Metrics/BlockLength: #1ブロック内の行数判定
+  Exclude:
+    - 'spec/**/*'
+
+Style/HashSyntax:
+  EnforcedStyle: 'ruby19' # ハッシュを新しいスタイルで書く
+
+Style/WordArray:
+  Exclude:
+    - db/seeds.rb # 配列がそのまま使えた方がデータ投入が楽なので
+
+AllCops:
+  Exclude:
+    # 自動生成したファイルはRubocopでチェックしない
+    - config.ru
+    - Gemfile
+    - Rakefile
+    - app/helpers/application_helper.rb
+    - app/models/application_record.rb
+    - bin/*
+    - doc/**/*
+    - config/**/*
+    - db/**/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+    # GemはRubocopでチェックしない。CircleCIではgemはvender/bundle配下にインストールされます。
+    # See http://blog-ja.sideci.com/entry/2015/03/12/160441
+    - vendor/**/*
+    - node_modules/**/*

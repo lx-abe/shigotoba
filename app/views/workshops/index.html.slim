@@ -1,0 +1,7 @@
+header
+div.title
+  h1 SHIGOTOBA
+div.search-field
+div.workshops-field
+  - @workshops.each do |workshop|
+    = render partial: 'workshop_block', locals: {workshop: workshop}

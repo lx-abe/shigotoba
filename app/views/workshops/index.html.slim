@@ -1,0 +1,11 @@
+.title
+  h1 SHIGOTOBA
+.search-field
+.workshops-field
+  - @workshops.each do |workshop|
+    div
+      .info-part
+        h3 = workshop.name
+        div 住所：#{workshop.address}
+        div 最寄駅：#{workshop.station.name}
+      .button-part

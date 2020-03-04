@@ -1,5 +1,5 @@
 h1 トップページ
 = link_to '駅登録', new_station_path
 br
-- @stations.each do |station| 
+- @stations.each do |station|
   = link_to station.name, station_path(station.id)

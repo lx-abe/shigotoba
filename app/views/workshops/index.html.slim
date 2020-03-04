@@ -9,3 +9,4 @@
         div 住所：#{workshop.address}
         div 最寄駅：#{workshop.station.name}
       .button-part
+        = link_to '詳細ページ', workshop_path(workshop.id)

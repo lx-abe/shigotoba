@@ -1,0 +1,41 @@
+.title
+  h1 SHIGOTOBA
+.search-field
+.workshop-field
+  h2 = @workshop.name
+  div
+    div 住所
+    div = @workshop.address
+  div
+    div 最寄駅
+    div = @workshop.station.name
+  div
+    div wi-fi有無
+    - if @workshop.wifi == true
+      div あり
+    - else
+      div なし
+  div
+    div 施設タイプ
+    - case @workshop.category
+    - when 0
+      div コワーキングスペース
+    - when 1
+      div カフェ
+    - when 2
+      div その他
+  div
+    div 席数
+    - if @workshop.seats_number.present?
+      div = @workshop.seats_number
+    - else
+      div 不明
+  div
+    div 営業時間
+    div = @workshop.opening_time
+  div
+    div 利用料
+    div = @workshop.price
+  div
+    div 特徴
+    div = @workshop.note

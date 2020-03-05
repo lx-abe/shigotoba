@@ -1,0 +1,8 @@
+ja:
+  hello: こんにちは
+  enums:
+    workshop:
+      category:
+        coworking_space: コワーキングスペース
+        cafe: カフェ
+        other: その他

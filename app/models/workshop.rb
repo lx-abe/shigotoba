@@ -10,4 +10,6 @@ class Workshop < ApplicationRecord
   validates :opening_time, presence: true
   validates :price, presence: true
   validates :station_id, presence: true
+
+  enum category: %i[coworking_space cafe other]
 end

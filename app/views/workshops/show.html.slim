@@ -11,25 +11,13 @@
     div = @workshop.station.name
   div
     div wi-fi有無
-    - if @workshop.wifi == true
-      div あり
-    - else
-      div なし
+    div = @workshop.wifi ? 'あり' : 'なし'
   div
     div 施設タイプ
-    - case @workshop.category
-    - when 0
-      div コワーキングスペース
-    - when 1
-      div カフェ
-    - when 2
-      div その他
+    div = @workshop.category_i18n
   div
     div 席数
-    - if @workshop.seats_number.present?
-      div = @workshop.seats_number
-    - else
-      div 不明
+    div = @workshop.seats_number.presence || '不明'
   div
     div 営業時間
     div = @workshop.opening_time

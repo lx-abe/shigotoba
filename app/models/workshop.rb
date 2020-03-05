@@ -11,5 +11,5 @@ class Workshop < ApplicationRecord
   validates :price, presence: true
   validates :station_id, presence: true
 
-  enum category: %i[coworking_space cafe other]
+  enum category: { coworking_space: 0, cafe: 1, other: 2 }
 end

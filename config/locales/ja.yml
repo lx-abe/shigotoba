@@ -1,0 +1,7 @@
+ja:
+  enums:
+    workshop:
+      category:
+        coworking_space: コワーキングスペース
+        cafe: カフェ
+        other: その他

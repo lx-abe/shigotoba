@@ -5,9 +5,8 @@ ja:
         coworking_space: コワーキングスペース
         cafe: カフェ
         other: その他
-  admin:
-    flash:
-      success: 作業場所： %{workshop}を作成しました
+  action:
+    created: "%{model}： %{name}を作成しました"
   activerecord:
     models:
       workshop: 作業場所

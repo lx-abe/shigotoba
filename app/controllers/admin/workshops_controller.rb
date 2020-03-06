@@ -10,7 +10,7 @@ module Admin
     def create
       @workshop = Workshop.new(workshop_params)
       if @workshop.save
-        redirect_to workshops_path, notice: t('action.created', model: '作業場所', name: @workshop.name)
+        redirect_to workshops_path, notice: t('action.created', model: Workshop.model_name.human, name: @workshop.name)
       else
         render 'new'
       end

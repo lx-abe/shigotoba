@@ -1,0 +1,55 @@
+h1 作業場所作成
+= form_with model: @workshop, url: admin_workshops_path, local: true do |form|
+
+  - if @workshop.errors.any?
+    ul
+      - @workshop.errors.full_messages.each do |message|
+        li
+          = message
+
+  table[border='1']
+    tr
+      th 項目
+      th 登録内容
+    tr
+      td 施設名称
+      td
+        = form.text_field :name
+    tr
+      td 住所
+      td
+        = form.text_field :address
+    tr
+      td 最寄駅
+      td
+        = form.collection_select(:station_id, Station.all,
+        :id, :name, include_blank: true)
+    tr
+      td 業態
+      td
+        = form.select :category,
+        Workshop.categories_i18n.invert, include_blank: true
+    tr
+      td wi-fi
+      td
+        = form.radio_button :wifi, true
+        div あり
+        = form.radio_button :wifi, false
+        div なし
+    tr
+      td 席数
+      td
+        = form.number_field :seats_number, min: 1
+    tr
+      td 営業時間
+      td
+        = form.text_field :opening_time
+    tr
+      td 利用料
+      td
+        = form.text_field :price
+    tr
+      td 特徴
+      td
+        = form.text_area :note
+  = form.submit

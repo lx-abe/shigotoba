@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# 施設の登録・管理
+# 施設閲覧（ユーザー向け）
 class WorkshopsController < ApplicationController
   def index
     @workshops = Workshop.all

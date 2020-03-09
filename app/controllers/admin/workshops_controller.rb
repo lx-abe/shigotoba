@@ -4,7 +4,7 @@ module Admin
   # 施設登録・管理（管理者用）
   class WorkshopsController < ApplicationController
     def index
-      @workshops = Workshop.all.order('updated_at ASC')
+      @workshops = Workshop.order(:updated_at)
     end
 
     def new

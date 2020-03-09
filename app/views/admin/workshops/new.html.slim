@@ -1,5 +1,5 @@
 h1 作業場所作成
-= form_with model: @workshop, url: admin_workshops_path, local: true do |form|
+= form_with model: [:admin, @workshop], local: true do |form|
 
   - if @workshop.errors.any?
     ul

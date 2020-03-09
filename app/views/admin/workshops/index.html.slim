@@ -1,0 +1,41 @@
+header
+  = notice
+  = link_to '施設登録', new_admin_workshop_path
+.title
+  h1 作業場所一覧
+.workshops_field
+  - @workshops.each do |workshop|
+    div
+      div 情報更新日：#{workshop.updated_at.strftime('%Y年 %m月 %d日 %H時 %M分')}
+      table[border='1']
+        tr
+          th 項目
+          th 登録内容
+        tr
+          td = Workshop.human_attribute_name(:name)
+          td = workshop.name
+        tr
+          td = Workshop.human_attribute_name(:address)
+          td = workshop.address
+        tr
+          td = Workshop.human_attribute_name(:station)
+          td = workshop.station.name
+        tr
+          td = Workshop.human_attribute_name(:category)
+          td = workshop.category_i18n
+        tr
+          td = Workshop.human_attribute_name(:wifi)
+          td = workshop.wifi ? 'あり' : 'なし'
+        tr
+          td = Workshop.human_attribute_name(:seats_number)
+          td = workshop.seats_number.presence || '不明'
+        tr
+          td = Workshop.human_attribute_name(:opening_time)
+          td = workshop.opening_time
+        tr
+          td = Workshop.human_attribute_name(:price)
+          td = workshop.price
+        tr
+          td = Workshop.human_attribute_name(:note)
+          td = workshop.note
+      br

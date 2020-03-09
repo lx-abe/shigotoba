@@ -8,6 +8,7 @@ header
     div
       div 情報更新日：#{l(workshop.updated_at, format: :long)}
       = link_to '編集', edit_admin_workshop_path(workshop.id)
+      = link_to '削除', "/admin/workshops/#{workshop.id}", method: :delete
       table[border='1']
         tr
           th 項目

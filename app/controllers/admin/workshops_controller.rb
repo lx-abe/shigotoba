@@ -20,6 +20,19 @@ module Admin
       end
     end
 
+    def edit
+      @workshop = Workshop.find(params[:id])
+    end
+
+    def update
+      @workshop = Workshop.find(params[:id])
+      if @workshop.update(workshop_params)
+        redirect_to admin_workshops_path, notice: t('action.updated', model: Workshop.model_name.human, name: @workshop.name)
+      else
+        render 'edit'
+      end
+    end
+
     private
 
     def workshop_params

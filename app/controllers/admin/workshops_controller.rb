@@ -33,6 +33,12 @@ module Admin
       end
     end
 
+    def destroy
+      @workshop = Workshop.find(params[:id])
+      @workshop.destroy
+      redirect_to admin_workshops_path, notice: t('action.destroyed', model: Workshop.model_name.human, name: @workshop.name)
+    end
+
     private
 
     def workshop_params

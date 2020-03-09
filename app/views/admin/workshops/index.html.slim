@@ -6,7 +6,8 @@ header
 .workshops_field
   - @workshops.each do |workshop|
     div
-      div 情報更新日：#{workshop.updated_at.strftime('%Y年 %m月 %d日 %H時 %M分')}
+      div 情報更新日：#{l(workshop.updated_at, format: :long)}
+      = link_to '編集', edit_admin_workshop_path(workshop.id)
       table[border='1']
         tr
           th 項目

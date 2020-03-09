@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 module Admin
-  # 施設登録（管理者用）
+  # 施設登録・管理（管理者用）
   class WorkshopsController < ApplicationController
+    def index
+      @workshops = Workshop.all.order('updated_at ASC')
+    end
+
     def new
       @workshop = Workshop.new
     end
@@ -10,7 +14,7 @@ module Admin
     def create
       @workshop = Workshop.new(workshop_params)
       if @workshop.save
-        redirect_to workshops_path, notice: t('action.created', model: Workshop.model_name.human, name: @workshop.name)
+        redirect_to admin_workshops_path, notice: t('action.created', model: Workshop.model_name.human, name: @workshop.name)
       else
         render 'new'
       end

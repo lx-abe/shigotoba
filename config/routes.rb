@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :stations
   resources :workshops, only: [:index, :show]
   namespace :admin do
-    resources :workshops, only: [:new, :create]
+    resources :workshops, only: [:index, :new, :create]
   end
 end

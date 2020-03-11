@@ -5,7 +5,6 @@ class WorkshopsController < ApplicationController
   def index
     @search_params = workshop_search_params
     @workshops = Workshop.search(@search_params)
-    # binding.pry
   end
 
   def show

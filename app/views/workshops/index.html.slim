@@ -1,6 +1,26 @@
 .title
   h1 SHIGOTOBA
+
 .search-field
+  = form_with scope: :search, url: workshops_path,
+    method: :get, local: true do |form|
+    strong 絞り込み条件
+    div
+      = form.label :station_id, Workshop.human_attribute_name(:station)
+      = form.collection_select(:station_id, Station.all, :id, :name,
+        selected: @search_params[:station_id], include_blank: '選択しない')
+    div
+      = form.label :category, Workshop.human_attribute_name(:category)
+      = form.select :category, Workshop.categories_i18n.invert,
+        selected: @search_params[:category], include_blank: '選択しない'
+    strong こだわり条件
+    div
+      = form.label :wifi, "#{Workshop.human_attribute_name(:wifi)}あり"
+      = form.check_box :wifi, { checked: @search_params[:wifi] == 'true' },
+        true, false
+    div
+      = form.submit '検索する'
+
 .workshops-field
   - @workshops.each do |workshop|
     div

@@ -3,10 +3,17 @@
 # 施設閲覧（ユーザー向け）
 class WorkshopsController < ApplicationController
   def index
-    @workshops = Workshop.all
+    @search_params = workshop_search_params
+    @workshops = Workshop.search(@search_params)
   end
 
   def show
     @workshop = Workshop.find(params[:id])
+  end
+
+  private
+
+  def workshop_search_params
+    params.fetch(:search, {}).permit(:station_id, :category, :wifi)
   end
 end

@@ -21,27 +21,15 @@ class WorkshopsController < ApplicationController
   end
 
   def search_by_station_id(workshops, station_id)
-    if station_id.present?
-      workshops.where(station_id: station_id)
-    else
-      workshops
-    end
+    station_id.present? ? workshops.where(station_id: station_id) : workshops
   end
 
   def search_by_category(workshops, category)
-    if category.present?
-      workshops.where(category: category)
-    else
-      workshops
-    end
+    category.present? ? workshops.where(category: category) : workshops
   end
 
   def search_by_wifi(workshops, wifi)
-    if wifi
-      workshops.where(wifi: wifi)
-    else
-      workshops
-    end
+    wifi ? workshops.where(wifi: wifi) : workshops
   end
 
   def workshop_search_params

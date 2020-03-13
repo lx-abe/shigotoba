@@ -1,0 +1,5 @@
+h3 駅登録
+- if @station.errors.any?
+  p 登録できませんでした。
+br
+= render 'form', station: @station

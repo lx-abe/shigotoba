@@ -1,7 +1,0 @@
-h3 駅登録
-- if @station.errors.any?
-  p 登録できませんでした。
-br
-= form_with model: @station, local: true do |form|
-  = form.text_field :name
-  = form.submit

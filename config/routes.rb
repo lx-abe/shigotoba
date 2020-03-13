@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root 'stations#index'
-  resources :stations
+  root 'workshops#index'
   resources :workshops, only: [:index, :show]
   namespace :admin do
     resources :workshops, except: :show
+    resources :stations
   end
 end

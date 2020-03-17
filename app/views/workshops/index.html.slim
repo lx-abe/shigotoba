@@ -1,32 +1,12 @@
-.title
-  h1 SHIGOTOBA
-
-.search-field
-  = form_with scope: :search, url: workshops_path,
-    method: :get, local: true do |form|
-    strong 絞り込み条件
-    div
-      = form.label :station_id, Workshop.human_attribute_name(:station)
-      = form.collection_select(:station_id, Station.all, :id, :name,
-        selected: @search_params[:station_id], include_blank: '選択しない')
-    div
-      = form.label :category, Workshop.human_attribute_name(:category)
-      = form.select :category, Workshop.categories_i18n.invert,
-        selected: @search_params[:category], include_blank: '選択しない'
-    strong こだわり条件
-    div
-      = form.label :wifi, "#{Workshop.human_attribute_name(:wifi)}あり"
-      = form.check_box :wifi, { checked: @search_params[:wifi] == 'true' },
-        true, false
-    div
-      = form.submit '検索する'
-
-.workshops-field
-  - @workshops.each do |workshop|
-    div
-      .info-part
-        h3 = workshop.name
-        div 住所：#{workshop.address}
-        div 最寄駅：#{workshop.station.name}
-      .button-part
-        = link_to '詳細ページ', workshop
+.container
+  = render 'title', stations: @stations
+  .row.mt-5
+    = render 'search_field', search_params: @search_params
+    .workshops-field.col-9.px-5
+      - @workshops.each do |workshop|
+        .card.mb-3.shadow-sm.bg-snow
+          .card-body
+            h4.card-title = workshop.name
+            h6.card-subtitle.mb-2.text-muted = workshop.station.name
+            p.card-text.mb-0 = workshop.address
+            = link_to '詳細ページ', workshop, class: 'btn btn-primary float-right'

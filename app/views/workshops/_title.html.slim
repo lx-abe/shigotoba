@@ -1,0 +1,10 @@
+.div
+  .row
+    = link_to 'SHIGOTOBA', root_path, class: 'h1 pt-3 text-reset text-decoration-none'
+  .row
+    .col-12
+      .float-right
+        p コワーキングスペース、カフェなどの作業場所を検索できます。<br>現在、下記の駅周辺の施設に対応しています。エリアは順次拡大予定です。
+        div 対応中の駅（エリア）
+        - stations.each do |station|
+          span.mark.mr-2 = station.name

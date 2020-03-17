@@ -5,9 +5,13 @@ class WorkshopsController < ApplicationController
   def index
     @search_params = workshop_search_params
     @workshops = search(workshop_search_params)
+    @stations = Station.all
   end
 
   def show
+    @search_params = workshop_search_params
+    @workshops = search(workshop_search_params)
+    @stations = Station.all
     @workshop = Workshop.find(params[:id])
   end
 

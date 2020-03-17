@@ -10,8 +10,8 @@
 
   .row.workshops_field
     h3.my-2 登録済み施設一覧
-    .div
-      .div.py-3.border-bottom
+    div
+      .py-3.border-bottom
         .row
           .col-2 編集・削除
           .col-2 更新日
@@ -27,7 +27,7 @@
           .col-1 = Workshop.human_attribute_name(:price)
           .col-3 = Workshop.human_attribute_name(:note)
       - @workshops.each do |workshop|
-        .div.py-3.border-bottom
+        .py-3.border-bottom
           .row.mb-2
             .col-2
               .row.m-0

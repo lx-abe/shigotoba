@@ -14,6 +14,7 @@ ja:
       workshop: 作業場所
     attributes:
       workshop:
+        id: ID
         name: 施設名称
         category: 業態
         address: 住所

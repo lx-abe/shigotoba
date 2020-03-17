@@ -1,5 +1,9 @@
-h1 トップページ
-= link_to '駅登録', new_admin_station_path
-br
-- @stations.each do |station|
-  = link_to station.name, admin_station_path(station)
+.container
+  .div
+    h1 駅管理ページ
+  .my-3
+    = link_to '新規登録', new_admin_station_path, class: 'h3'
+  .div
+    h3.my-2 登録済み一覧
+    - @stations.each do |station|
+      .div = link_to station.name, admin_station_path(station)

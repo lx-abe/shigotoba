@@ -1,44 +1,50 @@
-header
-  = notice
-  = link_to '施設登録', new_admin_workshop_path
-.title
-  h1 作業場所一覧
-.workshops_field
-  - @workshops.each do |workshop|
-    div
-      div 情報更新日：#{l(workshop.updated_at, format: :long)}
-      = link_to '編集', edit_admin_workshop_path(workshop)
-      = link_to '削除', admin_workshop_path(workshop), method: :delete
-      table[border='1']
-        tr
-          th 項目
-          th 登録内容
-        tr
-          td = Workshop.human_attribute_name(:name)
-          td = workshop.name
-        tr
-          td = Workshop.human_attribute_name(:address)
-          td = workshop.address
-        tr
-          td = Workshop.human_attribute_name(:station)
-          td = workshop.station.name
-        tr
-          td = Workshop.human_attribute_name(:category)
-          td = workshop.category_i18n
-        tr
-          td = Workshop.human_attribute_name(:wifi)
-          td = workshop.wifi ? 'あり' : 'なし'
-        tr
-          td = Workshop.human_attribute_name(:seats_number)
-          td = workshop.seats_number.presence || '不明'
-        tr
-          td = Workshop.human_attribute_name(:opening_time)
-          td = workshop.opening_time
-        tr
-          td = Workshop.human_attribute_name(:price)
-          td = workshop.price
-        tr
-          td = Workshop.human_attribute_name(:note)
-          td = workshop.note
-      br
-= paginate @workshops
+.pl-3
+  .row
+    h3 = notice
+
+  .row
+    h1 施設管理ページ
+
+  .row.my-3
+    = link_to '新規登録', new_admin_workshop_path, class: 'h3'
+
+  .row.workshops_field
+    h3.my-2 登録済み施設一覧
+    .div
+      .div.py-3.border-bottom
+        .row
+          .col-2 編集・削除
+          .col-2 更新日
+        .row
+          .col-1 = Workshop.human_attribute_name(:id)
+          .col-1 = Workshop.human_attribute_name(:name)
+          .col-1 = Workshop.human_attribute_name(:station)
+          .col-1 = Workshop.human_attribute_name(:category)
+          .col-1 = Workshop.human_attribute_name(:adress)
+          .col-1 = Workshop.human_attribute_name(:wifi)
+          .col-1 = Workshop.human_attribute_name(:seats_number)
+          .col-1 = Workshop.human_attribute_name(:opening_time)
+          .col-1 = Workshop.human_attribute_name(:price)
+          .col-3 = Workshop.human_attribute_name(:note)
+      - @workshops.each do |workshop|
+        .div.py-3.border-bottom
+          .row.mb-2
+            .col-2
+              .row.m-0
+                = link_to '編集', edit_admin_workshop_path(workshop)
+                div ・
+                = link_to '削除', admin_workshop_path(workshop), method: :delete
+            .col-2 = l(workshop.updated_at, format: :long)
+          .row
+            .col-1 = workshop.id
+            .col-1 = workshop.name
+            .col-1 = workshop.station.name
+            .col-1 = workshop.category_i18n
+            .col-1 = workshop.address
+            .col-1 = workshop.wifi ? 'あり' : 'なし'
+            .col-1 = workshop.seats_number.presence || '不明'
+            .col-1 = workshop.opening_time
+            .col-1 = workshop.price
+            .col-3 = workshop.note.presence || '登録なし'
+
+  = paginate @workshops

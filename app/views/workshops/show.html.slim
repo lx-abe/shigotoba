@@ -1,29 +1,28 @@
-.title
-  h1 SHIGOTOBA
-.search-field
-.workshop-field
-  h2 = @workshop.name
-  div
-    div 住所
-    div = @workshop.address
-  div
-    div 最寄駅
-    div = @workshop.station.name
-  div
-    div wi-fi有無
-    div = @workshop.wifi ? 'あり' : 'なし'
-  div
-    div 施設タイプ
-    div = @workshop.category_i18n
-  div
-    div 席数
-    div = @workshop.seats_number.presence || '不明'
-  div
-    div 営業時間
-    div = @workshop.opening_time
-  div
-    div 利用料
-    div = @workshop.price
-  div
-    div 特徴
-    div = @workshop.note
+.container
+  = render 'title', stations: @stations
+  .row.mt-5
+    = render 'search_field', search_params: @search_params
+    .workshop-field.col-9.px-5
+      .card.shadow.bg-snow
+        .card-body
+          h2.card-title.mb-4 = @workshop.name
+          h4.card-subtitle.text-muted.mb-3 = @workshop.station.name
+          p.card-text = @workshop.address
+          table.table.table-bordered.my-5
+            tbody
+              tr
+                th[style='width:20%'] = Workshop.human_attribute_name(:category)
+                td[style='width:80%'] = @workshop.category_i18n
+              tr
+                th[style='width:20%'] #{Workshop.human_attribute_name(:wifi)}環境
+                td[style='width:80%'] = @workshop.wifi ? 'あり' : 'なし'
+              tr
+                th[style='width:20%'] = Workshop.human_attribute_name(:seats_number)
+                td[style='width:80%'] = @workshop.seats_number.presence || '不明'
+              tr
+                th[style='width:20%'] = Workshop.human_attribute_name(:opening_time)
+                td[style='width:80%'] = @workshop.opening_time
+              tr
+                th[style='width:20%'] = Workshop.human_attribute_name(:price)
+                td[style='width:80%'] = @workshop.price
+          p.card-text.my-5 = simple_format(@workshop.note)

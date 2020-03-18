@@ -2,7 +2,7 @@
 
   - if workshop.errors.any?
     ul
-      - @workshop.errors.full_messages.each do |message|
+      - workshop.errors.full_messages.each do |message|
         li
           = message
 

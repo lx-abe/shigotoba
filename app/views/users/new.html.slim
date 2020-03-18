@@ -1,0 +1,23 @@
+= form_with model: @user, url: sign_in_path, local: true do |form|
+
+  - if @user.errors.any?
+    - @user.errors.full_messages.each do |message|
+      .alert.alert-warning.m-0 = message
+
+  .container.mt-5.p-5
+    .px-5
+      h1 ユーザー新規登録
+      .form-group
+        = form.label :name, User.human_attribute_name(:name)
+        = form.text_field :name, class: 'form-control'
+      .form-group
+        = form.label :email, User.human_attribute_name(:email)
+        = form.text_field :email, class: 'form-control'
+      .form-group
+        = form.label :password, User.human_attribute_name(:password)
+        = form.text_field :password, class: 'form-control'
+      .form-group
+        = form.label :password_confirmation, User.human_attribute_name(:password_confirmation)
+        = form.text_field :password_confirmation, class: 'form-control'
+      div
+        = form.submit value: '登録する', class: 'btn btn-danger float-right'

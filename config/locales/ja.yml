@@ -12,6 +12,7 @@ ja:
   activerecord:
     models:
       workshop: 作業場所
+      user: ユーザー
     attributes:
       workshop:
         id: ID
@@ -23,7 +24,13 @@ ja:
         opening_time: 営業時間
         price: 利用料
         note: 特徴
-        station: 最寄駅  
+        station: 最寄駅
+      user:
+        name: 名前
+        email: メールアドレス
+        password_digest: パスワード
+        password: パスワード
+        password_confirmation: パスワード（確認）
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_064950) do
     t.string "password_digest", null: false, comment: "パスワード"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   create_table "workshops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

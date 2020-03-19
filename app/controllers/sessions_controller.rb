@@ -3,16 +3,12 @@
 # ログイン
 class SessionsController < ApplicationController
   def create
-    @user = User.find_by!(email: session_params[:email])
-  rescue StandardError
-    flash.now[:danger] = t('.invalid', attribute: User.human_attribute_name(:email))
-    render 'new'
-  else
-    if @user.authenticate(session_params[:password])
+    @user = User.find_by(email: session_params[:email])
+    if @user&.authenticate(session_params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path, notice: t('.login')
+      redirect_to root_path, notice: t('.success')
     else
-      flash.now[:danger] = t('.invalid', attribute: User.human_attribute_name(:password))
+      flash.now[:danger] = t('.error')
       render 'new'
     end
   end

@@ -1,9 +1,10 @@
+= render 'navbar'
 .container
   = render 'title', stations: @stations
   .row.mt-5
     = render 'search_field', search_params: @search_params
     .workshop-field.col-9.px-5
-      .card.shadow.bg-snow
+      .card.shadow.bg-whitesmoke
         .card-body
           h2.card-title.mb-4 = @workshop.name
           h4.card-subtitle.text-muted.mb-3 = @workshop.station.name

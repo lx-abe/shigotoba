@@ -9,6 +9,10 @@ ja:
     created: "%{model}： %{name}を作成しました"
     updated: "%{model}： %{name}を編集しました"
     destroyed: "%{model}： %{name}を削除しました"
+  sessions:
+    create:
+      invalid: "%{attribute}が無効です"
+      login: ログインしました
   activerecord:
     models:
       workshop: 作業場所

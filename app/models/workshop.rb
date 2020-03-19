@@ -3,6 +3,8 @@
 # 施設
 class Workshop < ApplicationRecord
   belongs_to :station
+  has_many :users, through: :favorites
+  has_many :favorites
   validates :name, presence: true
   validates :category, presence: true
   validates :address, presence: true

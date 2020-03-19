@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_064950) do
+ActiveRecord::Schema.define(version: 2020_03_19_051737) do
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", comment: "ユーザーID"
+    t.bigint "workshop_id", comment: "施設ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["workshop_id"], name: "index_favorites_on_workshop_id"
+  end
 
   create_table "stations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false, comment: "駅名"
@@ -42,5 +51,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_064950) do
     t.index ["station_id"], name: "index_workshops_on_station_id"
   end
 
+  add_foreign_key "favorites", "users"
+  add_foreign_key "favorites", "workshops"
   add_foreign_key "workshops", "stations"
 end

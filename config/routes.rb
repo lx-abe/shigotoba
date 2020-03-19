@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/sign_in', to: 'users#new'
   post '/sign_in', to: 'users#create'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   
   resources :workshops, only: [:index, :show]
   namespace :admin do

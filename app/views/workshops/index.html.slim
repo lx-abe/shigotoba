@@ -11,3 +11,8 @@
             h6.card-subtitle.mb-2.text-muted = workshop.station.name
             p.card-text.mb-0 = workshop.address
             = link_to '詳細ページ', workshop, class: 'btn btn-primary float-right'
+            - unless @current_user == nil?
+              - if @favorite_workshops_ids.include?(workshop.id)
+                = link_to '★お気に入り済み', favorite_path(workshop), method: :delete, class: 'btn btn-warning float-right mr-2'
+              - else
+                = link_to '★お気に入り', favorites_path(workshop), method: :post, class: 'btn btn-outline-warning float-right mr-2'

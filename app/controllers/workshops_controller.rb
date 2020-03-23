@@ -17,6 +17,8 @@ class WorkshopsController < ApplicationController
     @stations = Station.all
     @workshop = Workshop.find(params[:id])
     @current_user = User.find(session[:user_id])
+    @favorite_workshops = Favorite.where(user_id: @current_user.id)
+    @favorite_workshops_ids = Favorite.where(user_id: @current_user.id).map(&:workshop_id)
   end
 
   private

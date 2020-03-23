@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
   def create
     @current_user = User.find(session[:user_id])
     if Favorite.create(user_id: @current_user.id, workshop_id: params[:format])
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       redirect_to root_path, notice: t('.error')
     end
@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
     @current_user = User.find(session[:user_id])
     @favorite_workshop = Favorite.find_by(user_id: @current_user.id, workshop_id: params[:id])
     if @favorite_workshop.destroy
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       redirect_to root_path, notice: t('.error')
     end

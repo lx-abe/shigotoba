@@ -13,6 +13,11 @@ ja:
     create:
       error: ログインに失敗しました
       success: ログインしました
+  favorites:
+    create:
+      error: お気に入り登録に失敗しました
+    destroy:
+      error: お気に入り削除に失敗しました
   activerecord:
     models:
       workshop: 作業場所

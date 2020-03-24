@@ -6,9 +6,7 @@ class WorkshopsController < ApplicationController
     @search_params = workshop_search_params
     @workshops = search(workshop_search_params)
     @stations = Station.all
-    @current_user = User.find(session[:user_id])
-    @favorite_workshops = Favorite.where(user_id: @current_user.id)
-    @favorite_workshops_ids = Favorite.where(user_id: @current_user.id).map(&:workshop_id)
+    @current_user = current_user
   end
 
   def show
@@ -16,9 +14,7 @@ class WorkshopsController < ApplicationController
     @workshops = search(workshop_search_params)
     @stations = Station.all
     @workshop = Workshop.find(params[:id])
-    @current_user = User.find(session[:user_id])
-    @favorite_workshops = Favorite.where(user_id: @current_user.id)
-    @favorite_workshops_ids = Favorite.where(user_id: @current_user.id).map(&:workshop_id)
+    @current_user = current_user
   end
 
   private

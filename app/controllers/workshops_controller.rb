@@ -6,7 +6,6 @@ class WorkshopsController < ApplicationController
     @search_params = workshop_search_params
     @workshops = search(workshop_search_params)
     @stations = Station.all
-    @current_user = current_user
   end
 
   def show
@@ -14,7 +13,6 @@ class WorkshopsController < ApplicationController
     @workshops = search(workshop_search_params)
     @stations = Station.all
     @workshop = Workshop.find(params[:id])
-    @current_user = current_user
   end
 
   private

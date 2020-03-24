@@ -1,7 +1,12 @@
-nav.navbar.bg-lightsteelblue.justify-content-end
-  .mr-1
-    = link_to '新規登録', sign_in_path, class: 'btn btn-danger'
-  .ml-1
-    = link_to 'ログイン', login_path, class: 'btn btn-danger'
+- if logged_in?
+  nav.navbar.bg-lightsteelblue.justify-content-end
+    .mr-1
+      = link_to 'お気に入り一覧', favorites_path, class: 'btn btn-warning'
+- else
+  nav.navbar.bg-lightsteelblue.justify-content-end
+    .mr-1
+      = link_to '新規登録', sign_in_path, class: 'btn btn-danger'
+    .ml-1
+      = link_to 'ログイン', login_path, class: 'btn btn-danger'
 - if flash[:notice].present?
   .alert.alert-success.m-0 = flash[:notice]

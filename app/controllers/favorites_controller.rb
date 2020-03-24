@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
-# お気に入り登録・削除
+# お気に入り機能
 class FavoritesController < ApplicationController
+  def index
+    @stations = Station.all
+  end
+
   def create
     @favorite_workshop = Favorite.new(user_id: current_user.id, workshop_id: params[:format])
     if @favorite_workshop.save

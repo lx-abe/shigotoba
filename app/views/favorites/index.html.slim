@@ -1,0 +1,18 @@
+= render 'workshops/navbar'
+.container
+  = render 'workshops/title', stations: @stations
+  .row.mt-5
+    .col-3.px-3
+      h5 #{current_user.name} さんの
+      h5 お気に入りページ
+    .col-9.px-5
+      - if current_user.workshops.present?
+        - current_user.workshops.each do |workshop|
+          .card.mb-3.shadow-sm.bg-whitesmoke
+            .card-body
+              h4.card-title = workshop.name
+              h6.card-subtitle.mb-2.text-muted = workshop.station.name
+              p.card-text.mb-0 = workshop.address
+              = link_to '詳細ページ', workshop, class: 'btn btn-primary float-right'
+      - else
+        p お気に入りは登録されていません

@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function () {
-  $('.favorite').on('click', '.create', function (e) {
+  $('.favorite_button_field').on('click', '.favorite_create_button', function (e) {
     e.preventDefault()
     e.stopPropagation()
     $.ajax({

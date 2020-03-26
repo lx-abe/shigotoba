@@ -9,7 +9,7 @@
           .row.justify-content-between
             h2.card-title.mb-4.ml-3 = @workshop.name
             - if logged_in?
-              .favorite = render 'favorite', workshop: @workshop
+              .favorite_button_field = render 'favorite', workshop: @workshop
           h4.card-subtitle.text-muted.mb-3 = @workshop.station.name
           p.card-text = @workshop.address
           table.table.table-bordered.my-5

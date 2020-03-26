@@ -7,10 +7,10 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite_workshop = Favorite.new(user_id: current_user.id, workshop_id: params[:workshop_id])
-    if @favorite_workshop.save
+    @favorite = Favorite.new(user_id: current_user.id, workshop_id: params[:workshop_id])
+    if @favorite.save
       respond_to do |format|
-        format.html { render partial: 'workshops/favorite_created', locals: { workshop: params[:workshop_id] } }
+        format.html { render partial: 'workshops/favorite', locals: { workshop: @favorite.workshop } }
       end
     else
       redirect_to root_path, notice: t('.error')
@@ -18,10 +18,10 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite_workshop = Favorite.find_by(user_id: current_user.id, workshop_id: params[:workshop_id])
-    if @favorite_workshop.destroy
+    @favorite = Favorite.find_by(user_id: current_user.id, workshop_id: params[:workshop_id])
+    if @favorite.destroy
       respond_to do |format|
-        format.html { render partial: 'workshops/favorite_before_create', locals: { workshop: params[:workshop_id] } }
+        format.html { render partial: 'workshops/favorite', locals: { workshop: @favorite.workshop } }
       end
     else
       redirect_to root_path, notice: t('.error')

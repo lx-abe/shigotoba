@@ -1,0 +1,4 @@
+- if current_user.workshops.include?(workshop)
+  = link_to '★お気に入り済み', workshop_favorites_path(workshop), method: :delete, class: 'favorite_destroy_button btn btn-warning float-right mr-2'
+- else
+  = link_to '★お気に入り', workshop_favorites_path(workshop), method: :post, class: 'favorite_create_button btn btn-outline-warning float-right mr-2'

@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   post '/sign_in', to: 'users#create'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  
-  resources :workshops, only: [:index, :show]
-  resources :favorites, only: [:index, :create, :destroy]
+  get '/favorites', to: 'favorites#index'
+
+  resources :workshops, only: [:index, :show] do
+    resource :favorites, only: [:create, :destroy]
+  end
+
   namespace :admin do
     resources :workshops, except: :show
     resources :stations

@@ -12,7 +12,4 @@
             p.card-text.mb-0 = workshop.address
             = link_to '詳細ページ', workshop, class: 'btn btn-primary float-right'
             - if logged_in?
-              - if current_user.workshops.include?(workshop)
-                = link_to '★お気に入り済み', favorite_path(workshop), method: :delete, class: 'btn btn-warning float-right mr-2'
-              - else
-                = link_to '★お気に入り', favorites_path(workshop), method: :post, class: 'btn btn-outline-warning float-right mr-2'
+              .favorite = render 'favorite', workshop: workshop

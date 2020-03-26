@@ -1,0 +1,4 @@
+- if current_user.workshops.include?(workshop)
+  = render 'favorite_created', workshop: workshop
+- else
+  = render 'favorite_before_create', workshop: workshop

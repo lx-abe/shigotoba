@@ -9,10 +9,7 @@
           .row.justify-content-between
             h2.card-title.mb-4.ml-3 = @workshop.name
             - if logged_in?
-              - if current_user.workshops.include?(@workshop)
-                = link_to '★お気に入り済み', favorite_path(@workshop), method: :delete, class: 'btn btn-warning float-right mr-3 mb-4'
-              - else
-                = link_to '★お気に入り', favorites_path(@workshop), method: :post, class: 'btn btn-outline-warning float-right mr-3 mb-4'
+              .favorite = render 'favorite', workshop: @workshop
           h4.card-subtitle.text-muted.mb-3 = @workshop.station.name
           p.card-text = @workshop.address
           table.table.table-bordered.my-5
